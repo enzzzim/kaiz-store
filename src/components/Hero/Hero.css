@@ -1,0 +1,240 @@
+/* ===============================
+   Hero.css
+   =============================== */
+
+:root {
+  --hero-bg: #f8f8f8;
+  --hero-fg: #111;
+  --hero-muted: #666;
+  --hero-accent: #111;
+  --hero-accent-contrast: #fff;
+
+  --hero-maxw: 1200px;
+  --hero-pad-x: 5vw;
+  --hero-pad-y: 64px;
+
+  --radius-pill: 999px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hero-bg: white;
+    --hero-fg: black;
+    --hero-muted: #a9b0bd;
+    --hero-accent: #e6e8ee;
+    --hero-accent-contrast: #0f1115;
+    --shadow-sm: 0 2px 6px rgba(0,0,0,.35);
+    --shadow-md: 0 10px 24px rgba(0,0,0,.45);
+  }
+}
+
+/* ========= Layout base ========= */
+
+.Hero {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  padding: var(--hero-pad-y) var(--hero-pad-x);
+  display: grid;
+  grid-template-columns: 1fr minmax(420px, 520px);
+  grid-template-areas:
+    "left right"
+    "button right";
+  gap: 32px 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Hero > * {
+  min-width: 0; /* evita overflow de textos longos */
+}
+
+.hero-left { grid-area: left; }
+.hero-right { grid-area: right; }
+.hero-latest-btn { grid-area: button; }
+
+/* ========= Conteúdo esquerdo ========= */
+
+.hero-left h2 {
+  font-size: 25px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: red;
+  margin: -40px 0 18px;
+  text-transform: uppercase;
+}
+
+.hero-left > div > p {
+  font-size: clamp(2rem, 1rem + 3.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  font-size: 120px;
+  margin: 0;
+}
+
+.hero-left > div p:not(:first-child) {
+  color: var(--hero-fg);
+  opacity: 0.95;
+}
+
+.hero-hand-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.hero-hand-icon p {
+  margin: 0;
+  margin-bottom: -15px;
+  font-size: 120px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.hero-hand-icon img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  transform-origin: 70% 70%;
+  animation: heroWave 2.2s ease-in-out infinite;
+}
+
+/* ========= Botão/CTA ========= */
+
+.hero-latest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  width: fit-content;
+  background: red;
+  color: white;
+  padding: 25px 22px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  user-select: none;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  margin-top: -150px;
+}
+
+.hero-latest-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.hero-latest-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-latest-btn > div {
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.hero-latest-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  transform: translateX(0);
+  transition: transform .2s ease;
+}
+
+.hero-latest-btn:hover img {
+  transform: translateX(4px);
+}
+
+/* ========= Imagem direita ========= */
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  transform: translateY(0);
+  animation: heroFloat 6s ease-in-out infinite;
+  margin-top: -40px;
+}
+
+/* ========= Animações ========= */
+
+@keyframes heroWave {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(18deg); }
+  30% { transform: rotate(-10deg); }
+  45% { transform: rotate(12deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(8deg); }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ========= Acessibilidade/links ========= */
+
+/* Caso seus títulos/textos tenham links */
+.Hero a {
+  color: inherit;
+  text-decoration: none;
+}
+.Hero a:hover {
+  text-decoration: none;
+}
+
+/* ========= Responsividade ========= */
+
+@media (max-width: 1024px) {
+  .Hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 860px) {
+  .Hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "button"
+      "right";
+    text-align: center;
+  }
+
+  .hero-hand-icon {
+    margin-inline: auto;
+  }
+
+  .hero-latest-btn {
+    margin-inline: auto;
+  }
+
+  .hero-right img {
+    max-width: 82%;
+  }
+}
+
+@media (max-width: 480px) {
+  .Hero {
+    padding: 40px var(--hero-pad-x);
+  }
+  .hero-left > div > p {
+    font-size: clamp(1.8rem, 1.1rem + 4.2vw, 2.6rem);
+  }
+  .hero-right img {
+    max-width: 92%;
+    border-radius: 16px;
+  }
+}
