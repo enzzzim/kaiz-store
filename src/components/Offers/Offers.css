@@ -1,0 +1,119 @@
+/* ===============================
+   Offers.css
+   =============================== */
+
+/* Container principal */
+.offers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  border-radius: 24px;
+  padding: 60px 80px;
+  margin: 100px auto;
+  max-width: 1200px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-top: -25px;
+}
+
+/* Lado esquerdo (texto) */
+.offers-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 2;
+}
+
+.offers-left h1 {
+  font-size: clamp(1.8rem, 1rem + 3vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.offers-left p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* Botão */
+.offers-left button {
+  margin-top: 20px;
+  width: fit-content;
+  background: red;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.offers-left button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: black;
+}
+
+/* Lado direito (imagem) */
+.offers-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.offers img {
+  width: 380px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+/* ======== Responsividade ======== */
+@media (max-width: 960px) {
+  .offers {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .offers-left {
+    align-items: center;
+  }
+
+  .offers img {
+    width: 320px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .offers {
+    padding: 50px 25px;
+    margin: 60px 0;
+  }
+
+  .offers-left h1 {
+    font-size: 1.8rem;
+  }
+
+  .offers-left p {
+    font-size: 1rem;
+  }
+
+  .offers img {
+    width: 260px;
+  }
+}
