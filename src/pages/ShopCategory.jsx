@@ -34,9 +34,12 @@ export const ShopCategory = (props) => {
               />
             );
           } else {
-            return null; // importante: sempre retornar algo no map
+            return null; 
           }
         })}
+      </div>
+      <div className="shopcategory-loadmore">
+        Veja Mais
       </div>
     </div>
   );

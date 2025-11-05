@@ -15,9 +15,10 @@
 }
 
 /* Banner no topo */
-.shop-category > img {
+.shop-category>img {
   width: 100%;
-  height: 280px;              /* ajuste se quiser maior/menor */
+  height: 280px;
+  /* ajuste se quiser maior/menor */
   object-fit: cover;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
@@ -70,27 +71,62 @@
   object-fit: contain;
 }
 
+.shopcategory-loadmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+  width: 233px;
+  height: 69px;
+  border-radius: 75px;
+  background: black;
+  color: white;
+  font-weight: 500;
+
+}
+
 /* Grid de produtos */
 .shopcategory-product {
   margin-top: 8px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  justify-items: center; /* centraliza cards se tiver largura fixa */
+  justify-items: center;
+  /* centraliza cards se tiver largura fixa */
 }
 
 /* Responsividade */
 @media (max-width: 1200px) {
-  .shopcategory-product { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .shopcategory-product {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
+
 @media (max-width: 860px) {
-  .shop-category { padding: 40px var(--hero-pad-x); }
-  .shop-category > img { height: 220px; border-radius: 16px; }
-  .shopcategory-product { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .shop-category {
+    padding: 40px var(--hero-pad-x);
+  }
+
+  .shop-category>img {
+    height: 220px;
+    border-radius: 16px;
+  }
+
+  .shopcategory-product {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
 }
+
 @media (max-width: 520px) {
-  .shopcategory-indexSort { flex-direction: column; align-items: stretch; }
-  .shopcategory-product { grid-template-columns: 1fr; }
+  .shopcategory-indexSort {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shopcategory-product {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===============================
@@ -106,7 +142,11 @@
   box-shadow: var(--shadow-sm);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
 
 .item img {
   width: 100%;
@@ -131,5 +171,16 @@
   gap: 16px;
   padding: 10px 14px 18px;
 }
-.item-price-new { color: #374151; font-size: 18px; font-weight: 700; }
-.item-price-old { color: #6B7280; font-size: 16px; font-weight: 500; text-decoration: line-through; }
+
+.item-price-new {
+  color: #374151;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item-price-old {
+  color: #6B7280;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
