@@ -1,0 +1,93 @@
+/* ===============================
+   DescriptionBox.css
+   =============================== */
+
+.Descriptionbox {
+  width: 100%;
+  max-width: var(--hero-maxw);
+  margin: 60px auto 100px;
+  padding: 0 var(--hero-pad-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--hero-fg);
+  background: var(--hero-bg);
+}
+
+/* ---------- Navegador (abas) ---------- */
+.descriptionbox-navigator {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #e5e7eb;
+  width: 100%;
+  max-width: 680px;
+}
+
+.descriptionbox-nav-box {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 22px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.25s ease;
+  color: #374151;
+}
+
+.descriptionbox-nav-box:hover {
+  color: #ef4444;
+}
+
+.descriptionbox-nav-box.fade {
+  color: #9ca3af;
+}
+
+.descriptionbox-nav-box:not(.fade) {
+  color: #ef4444;
+  border-bottom-color: #ef4444;
+}
+
+/* ---------- Conteúdo da descrição ---------- */
+.descriptionbox-description {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 32px 40px;
+  max-width: 900px;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+}
+
+.descriptionbox-description p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 680px) {
+  .Descriptionbox {
+    margin: 40px auto 60px;
+    padding: 0 20px;
+  }
+
+  .descriptionbox-navigator {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: none;
+  }
+
+  .descriptionbox-nav-box {
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .descriptionbox-description {
+    padding: 24px 20px;
+    font-size: 0.95rem;
+  }
+}
