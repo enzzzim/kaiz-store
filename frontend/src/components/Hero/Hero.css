@@ -1,0 +1,154 @@
+/* ===============================
+   Hero.css (revisado e responsivo)
+   =============================== */
+
+:root {
+  --hero-bg: #fff;
+  --hero-fg: #111;
+  --hero-muted: #666;
+  --hero-pad-x: 5vw;
+  --hero-pad-y: 56px;
+  --hero-maxw: 1200px;
+
+  --radius-pill: 999px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.12);
+}
+
+.Hero {
+  box-sizing: border-box;
+  width: 100%;                 /* nunca 100vw */
+  max-width: var(--hero-maxw);
+  margin: 0 auto;
+  padding: var(--hero-pad-y) var(--hero-pad-x);
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+
+  display: grid;
+  grid-template-columns: 1fr minmax(420px, 520px);
+  grid-template-areas:
+    "left right"
+    "button right";
+  gap: 32px 48px;
+  align-items: center;
+}
+
+.Hero * { min-width: 0; }      /* evita overflow por textos longos */
+img { max-width: 100%; display: block; height: auto; }
+
+/* áreas */
+.hero-left   { grid-area: left; }
+.hero-right  { grid-area: right; display: flex; align-items: center; justify-content: center; }
+.hero-latest-btn { grid-area: button; }
+
+/* títulos/stack de texto */
+.hero-left h2 {
+  font-size: 0.95rem;
+  letter-spacing: .25em;
+  font-weight: 800;
+  color: #ef4444;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.hero-left > div > p,
+.hero-hand-icon p {
+  font-weight: 800;
+  line-height: 1.02;
+  margin: 0;
+  font-size: clamp(2rem, 1rem + 8vw, 5rem);
+}
+
+.hero-hand-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.hero-hand-icon img {
+  width: clamp(46px, 5vw, 80px);
+  height: clamp(46px, 5vw, 80px);
+  object-fit: contain;
+  transform-origin: 70% 70%;
+  animation: heroWave 2.2s ease-in-out infinite;
+}
+
+/* CTA */
+.hero-latest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  background: #ef4444;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  user-select: none;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.hero-latest-btn:hover { transform: translateY(-2px); filter: brightness(1.03); }
+.hero-latest-btn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+
+.hero-latest-btn > div { font-weight: 800; letter-spacing: .01em; font-size: 1rem; }
+.hero-latest-btn img { width: 18px; height: 18px; transition: transform .2s ease; }
+.hero-latest-btn:hover img { transform: translateX(4px); }
+
+/* imagem direita com leve flutuação */
+.hero-right img {
+  width: 100%;
+  max-width: 520px;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+/* animações */
+@keyframes heroWave {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(18deg); }
+  30% { transform: rotate(-10deg); }
+  45% { transform: rotate(12deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(8deg); }
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ===============================
+   Responsividade
+   =============================== */
+
+/* tablets: cola as colunas e reduz gaps */
+@media (max-width: 1024px) {
+  .Hero { gap: 24px 32px; grid-template-columns: 1fr 1fr; }
+}
+
+/* mobile: empilha tudo e centraliza; sem overflow horizontal */
+@media (max-width: 860px) {
+  .Hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "button"
+      "right";
+    text-align: center;
+    padding: 40px var(--hero-pad-x);
+  }
+
+  .hero-hand-icon { margin-inline: auto; }
+  .hero-latest-btn { margin-inline: auto; }
+  .hero-right img { max-width: 82%; }
+}
+
+/* mobile estreito */
+@media (max-width: 480px) {
+  .hero-left h2 { font-size: 0.85rem; letter-spacing: .22em; }
+  .hero-right img { max-width: 92%; border-radius: var(--radius-lg); }
+  .hero-latest-btn { padding: 12px 18px; gap: 10px; }
+}
