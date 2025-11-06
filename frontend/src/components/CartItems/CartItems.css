@@ -1,0 +1,280 @@
+/* ===============================
+   CartItems.css
+   =============================== */
+
+.cartitems {
+  max-width: var(--hero-maxw);
+  margin: 0 auto;
+  padding: 56px var(--hero-pad-x);
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+}
+
+/* Cabeçalho */
+.cartitems-format-main {
+  display: grid;
+  grid-template-columns: 110px 1.5fr 120px 140px 120px 80px; /* img, nome, preço, qtd, total, remover */
+  align-items: center;
+  gap: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #374151;
+  padding: 12px 12px;
+}
+
+.cartitems > hr {
+  border: 0;
+  height: 2px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 2px;
+  margin: 6px 0 12px;
+}
+
+/* Linha do item */
+.cartitems-format {
+  display: grid;
+  grid-template-columns: 110px 1.5fr 120px 140px 120px 80px;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cartitems .row-wrapper {
+  margin: 10px 0;
+}
+
+/* Imagem do produto */
+.carticon-product-icon {
+  width: 100%;
+  max-width: 100px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+
+.cartitems-format p {
+  margin: 0;
+  color: #111;
+}
+
+/* Preços */
+.cartitems-format p:nth-child(3),
+.cartitems-format p:nth-child(5) {
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Quantidade (botão “chip”) */
+.cartitems-quantity {
+  width: 64px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 700;
+  cursor: default;
+}
+
+/* Ícone remover */
+.cartitems-format img[alt=""] + p + p + button + p + img,
+.cartitems-format > img:last-child {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+  justify-self: center;
+}
+
+.cartitems-format img[alt=""] + p + p + button + p + img:hover,
+.cartitems-format > img:last-child:hover {
+  transform: scale(1.06);
+  filter: brightness(0.9);
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+  .cartitems-format-main,
+  .cartitems-format {
+    grid-template-columns: 90px 1.5fr 100px 120px 100px 60px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Esconde cabeçalho e empilha os itens em cartões */
+  .cartitems-format-main { display: none; }
+
+  .cartitems-format {
+    grid-template-columns: 90px 1fr;
+    grid-template-areas:
+      "img name"
+      "img price"
+      "img qty"
+      "img total"
+      "img remove";
+    row-gap: 6px;
+    column-gap: 12px;
+  }
+
+  .carticon-product-icon { grid-area: img; }
+
+  /* Ajuste dos textos por posição (se preferir, adicione spans com classes) */
+  .cartitems-format p:nth-of-type(1) { grid-area: name; font-weight: 600; }
+  .cartitems-format p:nth-of-type(2) { grid-area: price; color: #374151; }
+  .cartitems-quantity { grid-area: qty; width: 72px; }
+  .cartitems-format p:nth-of-type(3) { grid-area: total; color: #374151; font-weight: 700; }
+  .cartitems-format img:last-child { grid-area: remove; justify-self: start; }
+}
+
+/* ===============================
+   CartItems - Totais e Cupom
+   =============================== */
+
+.cartitems-down {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* totais | cupom */
+  gap: 28px;
+  margin-top: 26px;
+}
+
+.cartitems-total {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 22px 24px;
+}
+
+.cartitems-total h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+  font-weight: 800;
+}
+
+.cartitems-total > div {
+  background: #fafafa;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.cartitems-total-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 4px;
+}
+
+.cartitems-total-item p {
+  margin: 0;
+  color: #374151;
+  font-weight: 600;
+}
+
+.cartitems-total-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.cartitems-total > div > hr {
+  border: 0;
+  height: 2px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 2px;
+  margin: 6px 0;
+}
+
+/* Botão pagar */
+.cartitems-total > button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: #ef4444;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.cartitems-total > button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.03);
+}
+
+/* ---------- Cupom ---------- */
+.cartitems-promocode {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: start; /* alinha pelo topo */
+}
+
+.cartitems-promocode p {
+  margin: 0;
+  color: var(--hero-muted);
+}
+
+/* trata tanto o typo quanto o correto */
+.caritems-promobox,
+.cartitems-promobox {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.caritems-promobox input,
+.cartitems-promobox input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  outline: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+.caritems-promobox input:focus,
+.cartitems-promobox input:focus {
+  border-color: #ef4444;
+  background: #fff;
+}
+
+.caritems-promobox button,
+.cartitems-promobox button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.caritems-promobox button:hover,
+.cartitems-promobox button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.03);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 980px) {
+  .cartitems-down {
+    grid-template-columns: 1fr;
+  }
+}

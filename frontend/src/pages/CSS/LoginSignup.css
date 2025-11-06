@@ -1,0 +1,142 @@
+/* ===============================
+   LoginSignup.css
+   =============================== */
+
+.loginsignup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px var(--hero-pad-x);
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  min-height: calc(100vh - 150px); 
+}
+
+.loginsignup-container {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 35px;
+  box-shadow: var(--shadow-md);
+  padding: 36px 32px;
+}
+
+.loginsignup-container h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.loginsignup-container p {
+  margin: 0;
+}
+
+/* campos */
+.loginsignup-fields,
+.loginsignuo-fields {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 20px;
+}
+
+.loginsignup input[type="text"],
+.loginsignup input[type="email"],
+.loginsignup input[type="password"] {
+  width: 95%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;  
+  background: #fafafa;
+  color: #111;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.loginsignup input::placeholder {
+  color: #9ca3af;                   
+}
+
+.loginsignup input:focus {
+  border-color: #ef4444;          
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, .15);
+  background: #fff;
+}
+
+/* botão principal */
+.loginsignup button {
+  width: 100%;
+  border: none;
+  background: #ef4444;           
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 14px;
+}
+
+.loginsignup button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+.loginsignup button:active {
+  transform: translateY(0);
+}
+
+/* link “já possui conta? login” */
+.loginsignup-login {
+  margin-top: 14px;
+  color: var(--hero-muted);
+  display: inline-block;
+}
+
+.loginsignup-login + span {
+  margin-left: 6px;
+  color: #ef4444;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.loginsignup-login + span:hover {
+  opacity: .85;
+  text-decoration: underline;
+}
+
+/* termos de uso */
+.loginsignup-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.loginsignup-agree input[type="checkbox"] {
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  accent-color: #ef4444;
+}
+
+.loginsignup-agree p {
+  color: var(--hero-muted);
+  line-height: 1.35;
+}
+
+/* responsivo */
+@media (max-width: 640px) {
+  .loginsignup {
+    padding: 40px var(--hero-pad-x);
+  }
+  .loginsignup-container {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+}

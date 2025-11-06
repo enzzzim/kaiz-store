@@ -1,0 +1,114 @@
+/* ===============================
+   NewCollections.css
+   =============================== */
+
+.new-collections {
+  width: 100%;
+  max-width: var(--hero-maxw);
+  margin: 0 auto;
+  padding: 56px var(--hero-pad-x);
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Título principal */
+.new-collections h1 {
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: .02em;
+  margin: 0;
+  text-align: center;
+  color: #111;
+}
+
+/* Linha divisória */
+.new-collections > hr {
+  width: 200px;
+  height: 4px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #252525;
+  margin: 14px 0 28px;
+}
+
+/* Grid dos cards */
+.collections {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  justify-items: center;
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .collections { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .new-collections { padding: 40px var(--hero-pad-x); }
+  .collections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+}
+
+@media (max-width: 520px) {
+  .collections { grid-template-columns: 1fr; }
+}
+
+/* ===============================
+   Estilo dos cards (Item)
+   =============================== */
+.item {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.item p {
+  margin: 10px 14px 0 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.4;
+  height: 45px;
+  overflow: hidden;
+}
+
+.item-prices {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px 18px;
+}
+
+.item-price-new {
+  color: #374151;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item-price-old {
+  color: #6B7280;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
