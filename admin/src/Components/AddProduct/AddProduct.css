@@ -1,0 +1,163 @@
+/* ===============================
+   AddProduct.css
+   =============================== */
+
+.add-product {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+}
+
+/* Campos individuais */
+.addproduct-itemfield {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.addproduct-itemfield p {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111;
+  margin: 0;
+}
+
+/* Inputs e Select */
+.addproduct-itemfield input,
+.addproduct-itemfield select {
+  padding: 10px 12px;
+  border: 1px solid black;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addproduct-itemfield input:focus,
+.addproduct-itemfield select:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+/* Preços lado a lado */
+.addproduct-price {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Upload de imagem */
+.addproduct-thumnail-img {
+  width: 120px;
+  height: 120px;
+  border: 2px dashed #ddd;
+  border-radius: 10px;
+  object-fit: contain;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addproduct-thumnail-img:hover {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+/* Botão principal */
+.addproduct-btn {
+  background: #ef4444;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.addproduct-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.addproduct-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ===============================
+   Responsividade
+   =============================== */
+@media (max-width: 768px) {
+  .add-product {
+    padding: 18px;
+    margin: 20px;
+  }
+
+  .addproduct-price {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .addproduct-thumnail-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .addproduct-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ====== PATCH: garantir texto visível em inputs ====== */
+.addproduct-itemfield input,
+.addproduct-itemfield select,
+.addproduct-itemfield textarea {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;   /* Chrome/Edge/Safari */
+  background: #fff !important;
+  caret-color: #ef4444;
+  text-shadow: none !important;
+  text-indent: 0 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Placeholder visível */
+.addproduct-itemfield input::placeholder,
+.addproduct-itemfield textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Autofill (remove amarelo e mantém texto visível) */
+.addproduct-itemfield input:-webkit-autofill,
+.addproduct-itemfield select:-webkit-autofill,
+.addproduct-itemfield textarea:-webkit-autofill {
+  -webkit-text-fill-color: #111 !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+}
+
+/* Reset defensivo global (por garantia) */
+input, select, textarea {
+  color: #111 !important;
+  background: #fff !important;
+  text-shadow: none !important;
+}
+
+/* (opcional) ver se tem overlay: liga outlines temporários
+* { outline: 1px solid rgba(255,0,0,.2); } 
+*/
